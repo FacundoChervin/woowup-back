@@ -2,11 +2,9 @@
 
 ## Architecture
 
-### Send an email to one or multiple recipients
-![Send an email to one or multiple recipients](send_email_diagram_1.png)
+### Diagrams
+![](diagrams.png)
 
-### Retrieve batch email information
-![Retrieve batch email information](get_batch_emails_diagram.png)
 
 ## Logic
 
