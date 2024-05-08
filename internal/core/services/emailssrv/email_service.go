@@ -25,6 +25,8 @@ type emailService struct {
 	sqsSender      messagesrv.SQSSender
 }
 
+// Receives the email and tries to send it
+// If the provider fails, it tries the next one by queueing the email again with another provider
 func (s emailService) Send(ctx context.Context, emailData domain.SendEmail) error {
 	var err error
 
@@ -88,8 +90,15 @@ func (s emailService) Send(ctx context.Context, emailData domain.SendEmail) erro
 	return nil
 }
 
+// Processes an email with multiple recipients and send each one to the SQS queue
 func (s emailService) SendEmailsSQS(ctx context.Context, emailData domain.EmailBatch) error {
+
+	differentRecipients := make(map[string]domain.EmailAddress)
 	for _, v := range emailData.Recipìents {
+		differentRecipients[v.Email] = v
+	}
+
+	for _, v := range differentRecipients {
 		emailData.Email.ID = emailData.ID
 		email := domain.SendEmail{
 			Email:     emailData.Email,
@@ -105,6 +114,7 @@ func (s emailService) SendEmailsSQS(ctx context.Context, emailData domain.EmailB
 	return nil
 }
 
+// Retrieves a batch of emails with the requested ID
 func (s emailService) Get(ctx context.Context, id string) (*[]domain.EmailEntity, error) {
 	return s.repository.Get(ctx, id)
 }

@@ -24,6 +24,7 @@ type emailHandler struct {
 	emailService ports.EmailService
 }
 
+// Send the emails to the SQS queue
 func (gh emailHandler) Send(ctx context.Context, request events.APIGatewayV2HTTPRequest) (*events.APIGatewayProxyResponse, error) {
 	requestData := new(sendEmail)
 
@@ -55,6 +56,7 @@ func (gh emailHandler) Send(ctx context.Context, request events.APIGatewayV2HTTP
 	return lambda.LambdaSuccessResponse(ctx, http.StatusAccepted, lambda.ResponseData{Name: "batchID", Data: batchID}), nil
 }
 
+// Retrieve an email batch with the requested ID
 func (gh emailHandler) Get(ctx context.Context, request events.APIGatewayV2HTTPRequest) (*events.APIGatewayProxyResponse, error) {
 	requestData := new(getEmail)
 

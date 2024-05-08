@@ -22,6 +22,7 @@ type emailHandler struct {
 	emailService ports.EmailService
 }
 
+// Processes the queue and tries to send the emails
 func (gh emailHandler) Send(ctx context.Context, msg events.SQSEvent) error {
 	var err error
 	if len(msg.Records) < 1 {
