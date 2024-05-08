@@ -62,3 +62,8 @@ The lambda architecture, as well as the DynamoDB database will scale well with a
 ## Production-readiness
 
 So I include some logs, and error handling. Of course we can upgrade this with more time, but there are the basics logs in case there is an error.
+
+## How to test it?
+
+I added three providers (mailgun,ses,sendgrid). Only sendgrid allows to send emails to addresses that are not preconfigured. The order of the providers in case one fails is mailgun --> ses --> sendgrid.
+So if you try to send an email to my address facundo.chervin@gmail.com it will send it with the first provider. In case you want to provide the fail scenario, you can put any other email address and it will send it with the sendgrid provider. So there will be two retries. You will see that if you insert the batch id and press the "Check email batch status" button.
