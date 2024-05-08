@@ -3,7 +3,7 @@
 ## Architecture
 
 ### Send an email to one or multiple recipients
-![Send an email to one or multiple recipients](send_email_diagram.png)
+![Send an email to one or multiple recipients](send_email_diagram_1.png)
 
 ### Retrieve batch email information
 ![Retrieve batch email information](get_batch_emails_diagram.png)
