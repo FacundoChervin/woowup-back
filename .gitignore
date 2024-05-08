@@ -1,0 +1,50 @@
+# dependencies
+node_modules
+
+# sst
+.sst
+.build
+
+# misc
+.DS_Store
+
+# local env files
+.env
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+vendor/
+
+# Apidocs directory
+docs/
+
+# Environment file
+.env
+app.env
+./*.env
+*.env
+.env
+config.yaml
+
+# VSCode generated folders
+.vscode/*
+
+dynamodb-data
+gin-bin
+
+#jetBrains generated folders
+.idea/
+
+.vscode
